@@ -1,6 +1,6 @@
 import axios from "axios";
-import Header from "../components/Header";
-import { products } from "../../starting-code/data/products";
+import { useEffect, useState } from "react";
+import Header from "../components/Header"; 
 import "./HomePage.css";
 
 function HomePage() {
@@ -12,10 +12,21 @@ function HomePage() {
   //   });
   
   //Using axios for the above code
-  axios.get('http://localhost:3000/api/products')
-    .then( (response) => {
-      console.log(response.data);
-    })
+  // axios.get('http://localhost:3000/api/products')
+  //   .then( (response) => {
+  //     console.log(response.data);
+  //   })
+
+
+  const[products, setProducts] = useState([]); //Making initial values as empty
+  useEffect( () => {
+    axios.get('http://localhost:3000/api/products')
+      .then( (response) => { 
+        setProducts(response.data);
+      })
+  }, [] ); //Passed and empty dependency array to make sure that the API call is made only once when the component is mounted
+
+
 
   return (
     <>
