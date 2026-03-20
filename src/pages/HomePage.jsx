@@ -3,27 +3,22 @@ import { useEffect, useState } from "react";
 import Header from "../components/Header"; 
 import "./HomePage.css";
 
-function HomePage() {
-  // fetch('http://localhost:3000/api/products')
-  //   .then( (response) => {
-  //     return response.json();
-  //   }).then( (data) => {
-  //     console.log(data);
-  //   });
-  
-  //Using axios for the above code
-  // axios.get('http://localhost:3000/api/products')
-  //   .then( (response) => {
-  //     console.log(response.data);
-  //   })
-
-
+function HomePage() { 
   const[products, setProducts] = useState([]); //Making initial values as empty
+  const[cart, setCart]= useState([]);
+
+  
   useEffect( () => {
     axios.get('http://localhost:3000/api/products')
       .then( (response) => { 
         setProducts(response.data);
       })
+    
+    axios.get('http://localhost:3000/api/cart-items')
+      .then( (response) => {
+        setCart(response.data);
+      })  
+
   }, [] ); //Passed and empty dependency array to make sure that the API call is made only once when the component is mounted
 
 
@@ -32,7 +27,7 @@ function HomePage() {
     <>
       <title>Home</title>
 
-      <Header></Header>
+      < Header cart={cart} />
 
       <div className="home-page">
         <div className="products-grid">
