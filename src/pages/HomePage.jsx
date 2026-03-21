@@ -3,20 +3,14 @@ import { useEffect, useState } from "react";
 import Header from "../components/Header"; 
 import "./HomePage.css";
 
-function HomePage() { 
-  const[products, setProducts] = useState([]); //Making initial values as empty
-  const[cart, setCart]= useState([]);
+function HomePage( { cart } ) { //Destructured the cart prop that is being passed from App.jsx
+  const[products, setProducts] = useState([]); //Making initial values as empty 
 
   
   useEffect( () => {
     axios.get('api/products')
       .then( (response) => { 
         setProducts(response.data);
-      })
-    
-    axios.get('api/cart-items')
-      .then( (response) => {
-        setCart(response.data);
       })  
 
   }, [] ); //Passed and empty dependency array to make sure that the API call is made only once when the component is mounted
