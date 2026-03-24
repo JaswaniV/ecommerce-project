@@ -47,7 +47,7 @@ function HomePage( { cart } ) { //Destructured the cart prop that is being passe
                   <div className="product-rating-count link-primary">{product.rating.count}</div>
                 </div>
 
-                <div className="product-price">Rs.{product.price}</div>
+                <div className="product-price">Rs.{product.priceCents}</div>
 
                 <div className="product-quantity-container">
                   <select>
