@@ -8,13 +8,14 @@ function HomePage( { cart } ) { //Destructured the cart prop that is being passe
   const[products, setProducts] = useState([]); //Making initial values as empty 
 
   
-  useEffect( () => {
-    axios.get('api/products')
-      .then( (response) => { 
-        setProducts(response.data);
-      })  
+  useEffect(() => {
+    const getHomeData = async () => {
+      const response = await axios.get('/api/products');
+      setProducts(response.data);
+    };
 
-  }, [] ); //Passed and empty dependency array to make sure that the API call is made only once when the component is mounted
+    getHomeData();
+  }, []); //Passed and empty dependency array to make sure that the API call is made only once when the component is mounted
 
 
 
