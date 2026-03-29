@@ -4,7 +4,7 @@ import Header from "../../components/Header";
 import ProductsGrid from "./ProductsGrid";
 import "./HomePage.css";
 
-function HomePage( { cart } ) { //Destructured the cart prop that is being passed from App.jsx
+function HomePage( { cart, loadCart } ) { //Destructured the cart prop that is being passed from App.jsx
   const[products, setProducts] = useState([]); //Making initial values as empty 
 
   
@@ -22,11 +22,12 @@ function HomePage( { cart } ) { //Destructured the cart prop that is being passe
   return (
     <>
       <title>Home</title>
+      <link rel="icon" type="image/svg+xml" href="home-favicon.png" />
 
       < Header cart={cart} />
 
       <div className="home-page">
-        <ProductsGrid products={products} />
+        <ProductsGrid products={products} loadCart={loadCart} />
       </div>
     </>
   );
