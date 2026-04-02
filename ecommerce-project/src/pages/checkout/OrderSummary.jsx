@@ -7,7 +7,7 @@ function OrderSummary({ cart, deliveryOptions, loadCart }) {
     <div className="order-summary">
       {cart.map((item) => {
         const selectedDeliveryOption = deliveryOptions.find(
-          (option) => option.id === item.deliveryOptionId,
+          (option) => option.id === item.deliveryOptionId
         );
 
         const deleteItem = async () => {
@@ -19,7 +19,7 @@ function OrderSummary({ cart, deliveryOptions, loadCart }) {
           <div key={item.productId} className="cart-item-container">
             <div className="delivery-date">
               Delivery date:{" "}
-              {dayjs(selectedDeliveryOption.estimatedDeliveryTimeMs).format(
+              {dayjs(selectedDeliveryOption?.estimatedDeliveryTimeMs).format(
                 "dddd, MMMM D",
               )}
             </div>
