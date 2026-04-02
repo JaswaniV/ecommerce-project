@@ -1,4 +1,4 @@
-import axios from 'axios'
+import api from './apii'
 import { Routes, Route } from 'react-router'
 import { useEffect, useState } from 'react'
 import HomePage from './pages/home/HomePage'
@@ -12,13 +12,12 @@ function App() {
 
   //Renamin the fetchAppData to loadCart
   const loadCart= async () =>{
-      const response = await axios.get('/api/cart-items?expand=product');
+      const response = await api.get('/api/cart-items?expand=product');
       setCart(response.data);
     };
 
   useEffect( () => {
     loadCart();
-
   }, [] );
 
 

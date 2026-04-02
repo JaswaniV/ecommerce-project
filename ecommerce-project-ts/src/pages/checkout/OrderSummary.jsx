@@ -6,9 +6,9 @@ import DeliveryOptions from "./DeliveryOptions";
 function OrderSummary({ cart, deliveryOptions, loadCart }) {
   return (
     <div className="order-summary">
-      {cart.map((item) => {
+      {deliveryOptions.length > 0 && cart.map((item) => {
         const selectedDeliveryOption = deliveryOptions.find(
-          (option) => option.id === item.deliveryOptionId
+          (option) => {return option.id === item.deliveryOptionId}  
         );
 
         const deleteItem = async () => {
@@ -28,7 +28,7 @@ function OrderSummary({ cart, deliveryOptions, loadCart }) {
             <div className="cart-item-details-grid">
               <img 
                 className="product-image" 
-                src={`${IMAGE_URL}/${item.product.image}`} // ✅ CHANGED
+                src={`${IMAGE_URL}/${item.product.image}`} 
               />
 
               <div className="cart-item-details">
