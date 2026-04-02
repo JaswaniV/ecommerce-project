@@ -1,4 +1,4 @@
-import axios from "axios";
+import api, { IMAGE_URL } from "../../apii"; 
 import dayjs from 'dayjs';
 import { useState, useEffect, Fragment } from 'react';
 import Header from "../../components/Header";
@@ -8,7 +8,7 @@ function OrdersPage({ cart }) {
   const [orders, setOrders] = useState([]);
 
   useEffect(() => {
-    axios.get('/api/orders?expand=products')
+    api.get('/api/orders?expand=products') 
       .then((response) => {
         setOrders(response.data);
       });
@@ -17,7 +17,7 @@ function OrdersPage({ cart }) {
   return (
     <>
       <title>Orders</title>
-      <link rel="icon" type="image/svg+xml" href="orders-favicon.png" />
+      <link rel="icon" type="image/png" href="/orders-favicon.png" />
 
       <Header cart={cart} />
 
@@ -52,7 +52,10 @@ function OrdersPage({ cart }) {
                     return (
                       <Fragment key={orderProduct.product.id}>
                         <div className="product-image-container">
-                          <img src={orderProduct.product.image} />
+                          <img 
+                            src={`${IMAGE_URL}/${orderProduct.product.image}`} 
+                            
+                          />
                         </div>
 
                         <div className="product-details">
@@ -66,7 +69,11 @@ function OrdersPage({ cart }) {
                             Quantity: {orderProduct.quantity}
                           </div>
                           <button className="buy-again-button button-primary">
-                            <img className="buy-again-icon" src="images/icons/buy-again.png" />
+                            <img 
+                              className="buy-again-icon" 
+                              src={`${IMAGE_URL}/images/icons/buy-again.png`}
+                              
+                            />
                             <span className="buy-again-message">Add to Cart</span>
                           </button>
                         </div>

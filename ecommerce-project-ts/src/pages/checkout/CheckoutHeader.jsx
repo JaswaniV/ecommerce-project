@@ -1,13 +1,20 @@
-import {Link} from "react-router";
+import { Link } from "react-router";
+import { IMAGE_URL } from "../../apii"; //  
 
 function CheckoutHeader(){
     return (
       <div className="checkout-header">
         <div className="header-content">
           <div className="checkout-header-left-section">
-            <Link to="/">
-              <img className="logo" src="images/logo.png" />
-              <img className="mobile-logo" src="images/mobile-logo.png" />
+            <Link to="/"> 
+              <h2 style={{
+                fontSize: "20px",
+                fontWeight: "700",
+                color: "black",
+                textDecoration: "none"
+              }}>
+                VJ Commerce
+              </h2>
             </Link>
           </div>
 
@@ -20,10 +27,14 @@ function CheckoutHeader(){
           </div>
 
           <div className="checkout-header-right-section">
-            <img src="images/icons/checkout-lock-icon.png" />
+            <img 
+              src={`${IMAGE_URL}/images/icons/checkout-lock-icon.png`}
+              
+            />
           </div>
         </div>
       </div>
     );
 }
+
 export default CheckoutHeader;

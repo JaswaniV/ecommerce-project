@@ -1,4 +1,4 @@
-import axios from "axios";
+import api from "../../apii"; 
 import { useEffect, useState } from "react";
 import Header from "../../components/Header"; 
 import ProductsGrid from "./ProductsGrid";
@@ -10,7 +10,7 @@ function HomePage( { cart, loadCart } ) { //Destructured the cart prop that is b
   
   useEffect(() => {
     const getHomeData = async () => {
-      const response = await axios.get('/api/products');
+      const response = await api.get('/api/products');
       setProducts(response.data);
     };
 
@@ -22,7 +22,7 @@ function HomePage( { cart, loadCart } ) { //Destructured the cart prop that is b
   return (
     <>
       <title>Home</title>
-      <link rel="icon" type="image/svg+xml" href="home-favicon.png" />
+      <link rel="icon" type="image/png" href="/home-favicon.png" />
 
       < Header cart={cart} />
 

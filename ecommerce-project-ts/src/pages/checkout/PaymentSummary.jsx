@@ -1,4 +1,4 @@
-import axios from "axios";
+import api from "../../apii"; 
 import { useNavigate } from "react-router";
 
 function PaymentSummary( { paymentSummary, loadCart } ) {
@@ -6,7 +6,7 @@ function PaymentSummary( { paymentSummary, loadCart } ) {
 
 
   const createOrder = async () => {
-    await axios.post('/api/orders');
+    await api.post('/api/orders');
     await loadCart();
     navigate('/orders');
   }

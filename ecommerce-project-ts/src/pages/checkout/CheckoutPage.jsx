@@ -1,4 +1,4 @@
-import axios from "axios";
+import api from "../../apii"; 
 import { useEffect, useState } from "react";
 import OrderSummary from "./OrderSummary";
 import PaymentSummary from "./PaymentSummary"; 
@@ -13,12 +13,12 @@ function CheckoutPage({ cart, loadCart }) {
 
   useEffect(() => {
     const fetchCheckoutData = async () => {
-      let response = await axios.get(
+      let response = await api.get(
         '/api/delivery-options?expand=estimatedDeliveryTime'
       );
       setDeliveryOptions(response.data);
 
-      response = await axios.get('/api/payment-summary');
+      response = await api.get('/api/payment-summary');
       setPaymentSummary(response.data);
     };
 
@@ -28,7 +28,7 @@ function CheckoutPage({ cart, loadCart }) {
   return (
     <>
       <title>Checkout</title>
-      <link rel="icon" type="image/svg+xml" href="cart-favicon.png  " />
+      <link rel="icon" type="image/png" href="/cart-favicon.png" />
 
       <CheckoutHeader />
 

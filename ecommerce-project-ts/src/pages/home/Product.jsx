@@ -1,11 +1,11 @@
-import axios from "axios";
+import api, {IMAGE_URL} from "../../apii"; 
 import { useState } from "react";
 
 function Product({ product, loadCart }) {
   const [quantity, setQuantity] = useState(1);
 
   const addToCart= async () => {
-    await axios.post("/api/cart-items", {
+    await api.post("/api/cart-items", {
       productId: product.id,
       quantity: quantity, //As Both the key and values are of same name we can write it as quantity instead of quantity:quantity Basically following the shorthand property name syntax of JS
     });
@@ -23,7 +23,7 @@ function Product({ product, loadCart }) {
   return (
     <div className="product-container" data-testid="product-container">
       <div className="product-image-container">
-        <img className="product-image" data-testid='product-image' src={product.image} />
+        <img className="product-image" data-testid='product-image' src={`${IMAGE_URL}/${product.image}`} />
       </div>
 
       <div className="product-name limit-text-to-2-lines">{product.name}</div>
@@ -31,7 +31,7 @@ function Product({ product, loadCart }) {
       <div className="product-rating-container">
         <img
           className="product-rating-stars" data-testid='product-rating-stars-image'
-          src={`images/ratings/rating-${product.rating.stars * 10}.png`}
+          src={`${IMAGE_URL}/images/ratings/rating-${product.rating.stars * 10}.png`}
         />
         <div className="product-rating-count link-primary">
           {product.rating.count}
@@ -58,7 +58,7 @@ function Product({ product, loadCart }) {
       <div className="product-spacer"></div>
 
       <div className="added-to-cart">
-        <img src="images/icons/checkmark.png" />
+        <img src={`${IMAGE_URL}/images/icons/checkmark.png`} />
         Added
       </div>
 

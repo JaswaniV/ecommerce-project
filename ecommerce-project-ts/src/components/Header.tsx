@@ -1,4 +1,5 @@
 import { NavLink } from "react-router";
+import { IMAGE_URL } from "../apii"; 
 import './header.css';
 
 
@@ -17,8 +18,6 @@ function Header( { cart }: HeaderProps) {
     totalQuantity += item.quantity;
   });
 
-
-
   return (
     <div className="header">
       <div className="left-section">
@@ -31,7 +30,10 @@ function Header( { cart }: HeaderProps) {
         <input className="search-bar" type="text" placeholder="Search" />
 
         <button className="search-button">
-          <img className="search-icon" src="images/icons/search-icon.png" />
+          <img 
+            className="search-icon" 
+            src={`${IMAGE_URL}/images/icons/search-icon.png`} 
+          />
         </button>
       </div>
 
@@ -41,7 +43,10 @@ function Header( { cart }: HeaderProps) {
         </NavLink>
 
         <NavLink className="cart-link header-link" to="/checkout">
-          <img className="cart-icon" src="images/icons/cart-icon.png" />
+          <img 
+            className="cart-icon" 
+            src={`${IMAGE_URL}/images/icons/cart-icon.png`}  
+          />
           <div className="cart-quantity">{totalQuantity}</div>
           <div className="cart-text">Cart</div>
         </NavLink>
@@ -49,4 +54,5 @@ function Header( { cart }: HeaderProps) {
     </div>
   );
 }
+
 export default Header;
