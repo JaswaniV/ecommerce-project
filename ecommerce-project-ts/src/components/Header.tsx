@@ -1,6 +1,6 @@
 import { NavLink } from "react-router";
 import { IMAGE_URL } from "../apii"; 
-import './header.css';
+import './Header.css';
 
 
 type HeaderProps = {
