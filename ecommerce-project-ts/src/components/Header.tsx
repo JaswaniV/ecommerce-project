@@ -23,8 +23,7 @@ function Header( { cart }: HeaderProps) {
     <div className="header">
       <div className="left-section">
         <NavLink to="/" className="header-link">
-          <img className="logo" src="images/logo-white.png" />
-          <img className="mobile-logo" src="images/mobile-logo-white.png" />
+          <h2 className="logo-text">VJ Commerce</h2>
         </NavLink>
       </div>
 

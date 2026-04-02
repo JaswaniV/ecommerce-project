@@ -22,12 +22,12 @@ function DeliveryOptions({ deliveryOptions, item, loadCart }) {
         }
 
         return (
-          <div key={option.id} className="delivery-option" 
-            onClick={updateDeliveryOption}>
+          <div key={option.id} className="delivery-option">
             <input
               type="radio"
-              checked={option.id === item.deliveryOptionId}
+              checked={item && option.id === item.deliveryOptionId}
               className="delivery-option-input"
+              onChange={updateDeliveryOption}
               name={`delivery-option-${item.productId}`}
             />
             <div>

@@ -1,23 +1,17 @@
 import { NavLink } from "react-router";
-import './header.css';
+import "./header.css";
 
-
-
-function Header( { cart } ) {
-
+function Header({ cart }) {
   let totalQuantity = 0;
-  cart.forEach( (item) => {
+  cart.forEach((item) => {
     totalQuantity += item.quantity;
   });
-
-
 
   return (
     <div className="header">
       <div className="left-section">
         <NavLink to="/" className="header-link">
-          <img className="logo" src="images/logo-white.png" />
-          <img className="mobile-logo" src="images/mobile-logo-white.png" />
+          <h2 className="logo-text">VJ Commerce</h2>
         </NavLink>
       </div>
 
